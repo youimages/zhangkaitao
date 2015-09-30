@@ -38,7 +38,7 @@
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <constructor-arg value="sid"/>
         <property name="httpOnly" value="true"/>
-        <property name="maxAge" value="-1"/>
+        <property name="maxAge" value="-1"/><!--maxAge=-1 表示浏览器关闭时失效此 Cookie -->
     </bean>
 
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
@@ -96,6 +96,7 @@
     <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
         <property name="usernameParam" value="username"/>
         <property name="passwordParam" value="password"/>
+        <!--  rememberMe 请求参数名，请求参数是 boolean 类型，true 表示rememberMe -->
         <property name="rememberMeParam" value="rememberMe"/>
         <property name="loginUrl" value="/login"/>
     </bean>
@@ -112,6 +113,8 @@
                 <entry key="sysUser" value-ref="sysUserFilter"/>
             </util:map>
         </property>
+        <!-- "/authenticated.jsp = authc" 表 示 访 问 该 地 址 用 户 必 须 身 份 验 证 通 过 （ Subject.isAuthenticated()==true） -->
+        <!-- "/** = user" 表示访问该地址的用户是身份验证通过或RememberMe 登录的都可以 -->
         <property name="filterChainDefinitions">
             <value>
                 /login = authc

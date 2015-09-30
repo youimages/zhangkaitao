@@ -1,6 +1,7 @@
 package com.github.zhangkaitao.shiro.chapter16.web.bind.method;
 
 import com.github.zhangkaitao.shiro.chapter16.web.bind.annotation.CurrentUser;
+
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -14,8 +15,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  * <p>Version: 1.0
  */
 public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
-
-    public CurrentUserMethodArgumentResolver() {
+	public CurrentUserMethodArgumentResolver() {
     }
 
     @Override

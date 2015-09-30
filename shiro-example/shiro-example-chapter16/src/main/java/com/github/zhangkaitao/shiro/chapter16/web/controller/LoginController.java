@@ -18,6 +18,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login"    )
     public String showLoginForm(HttpServletRequest req, Model model) {
+    	//System.out.println("---------------------------------------------");
         String exceptionClassName = (String)req.getAttribute("shiroLoginFailure");
         String error = null;
         if(UnknownAccountException.class.getName().equals(exceptionClassName)) {
@@ -27,9 +28,11 @@ public class LoginController {
         } else if(exceptionClassName != null) {
             error = "其他错误：" + exceptionClassName;
         }
+        //System.out.println("++++++++++++++++++++++++++++");
         model.addAttribute("error", error);
         return "login";
     }
-
+    
+   
 
 }
